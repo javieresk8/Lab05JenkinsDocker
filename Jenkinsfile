@@ -23,7 +23,7 @@ vpipeline {
         stage('Deploy Image'){
             steps{
                 sh 'docker rm -f $APPNAME'
-                sh 'docker run -d --name $APPNAME -p $Port:80 $REGISTRY/$IMAGE:$VERSION'
+                sh 'docker run -d --name $APPNAME$Env -p $Port:80 $REGISTRY/$IMAGE:$VERSION'
             }
         }
     }
