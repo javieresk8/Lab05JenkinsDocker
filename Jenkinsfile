@@ -5,7 +5,7 @@ pipeline {
         IMAGE = "myapitest"
         VERSION = 2
         REGISTRY = "javieresk8"
-        PORT = "80"
+        PORT = 80
         DOCKER_HUB_LOGIN = credentials('dockerhub-javieresk8')
     }
     stages {
