@@ -3,7 +3,7 @@ vpipeline {
     environment {
         APPNAME = "myapitest"
         IMAGE = "myapitest"
-        VERSION = 2
+        VERSION = 3
         REGISTRY = "javieresk8"
         DOCKER_HUB_LOGIN = credentials('dockerhub-javieresk8')
     }
