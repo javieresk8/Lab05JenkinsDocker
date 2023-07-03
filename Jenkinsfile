@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        APPNAME = "myapitest"
+        APPNAME = "myapitest{$Env}"
         IMAGE = "myapitest"
         VERSION = 3
         REGISTRY = "javieresk8"
@@ -22,8 +22,8 @@ pipeline {
         }
         stage('Deploy Image'){
             steps{
-                sh 'docker rm -f $APPNAME{$Env}'
-                sh 'docker run -d --name $APPNAME{$Env} -p $Port:80 $REGISTRY/$IMAGE:$VERSION'
+                sh 'docker rm -f $APPNAME'
+                sh 'docker run -d --name $APPNAME -p $Port:80 $REGISTRY/$IMAGE:$VERSION'
             }
         }
     }
