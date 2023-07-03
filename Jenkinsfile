@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        APPNAME = "myapitest{$Env}"
+        APPNAME = "myapitest"
         IMAGE = "myapitest"
         VERSION = 3
         REGISTRY = "javieresk8"
