@@ -36,7 +36,7 @@ namespace Lab01.Controllers
         public string GetHelatCheck()
         {
 
-            return "I am Alive again!"; 
+            return "I am Alive again Citytech!"; 
         }
     }
 }
