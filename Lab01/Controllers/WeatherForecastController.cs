@@ -4,16 +4,17 @@ namespace Lab01.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class TestController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        };
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly ILogger<TestController> _logger;
+
+        public TestController(ILogger<TestController> logger)
         {
             _logger = logger;
         }
@@ -28,6 +29,14 @@ namespace Lab01.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet]
+        [Route("health")]
+        public string GetHelatCheck()
+        {
+
+            return "I am Alive!"; 
         }
     }
 }
