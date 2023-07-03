@@ -5,6 +5,7 @@ pipeline {
         IMAGE = "myapitest"
         VERSION = 2
         REGISTRY = "javieresk8"
+        PORT = "80"
         DOCKER_HUB_LOGIN = credentials('dockerhub-javieresk8')
     }
     stages {
@@ -23,7 +24,7 @@ pipeline {
         stage('Deploy Image'){
             steps{
                 sh 'docker rm -f $APPNAME'
-                sh 'docker run -d --name $APPNAME$Env -p $PORT:$Port $REGISTRY/$IMAGE:$VERSION'
+                sh 'docker run -d --name $APPNAME$Env -p $Port:$PORT $REGISTRY/$IMAGE:$VERSION'
             }
         }
     }
