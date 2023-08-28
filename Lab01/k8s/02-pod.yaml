@@ -1,0 +1,41 @@
+# https://kubernetes.io/docs/concepts/workloads/pods/
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "nginx"
+  namespace: n1
+  labels:
+    app: "nginx"
+spec:
+  containers:
+  - name: nginx
+    image: "nginx:alpine"
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    env:
+    - name: VAR1
+      value: valor1
+    - name: VAR2
+      value: valor2
+    - name: DB_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: myapp
+          key: DB_HOST
+    ports:
+    - containerPort: 80
+      name: http
+    volumeMounts:
+    - name: localtime
+      mountPath: /etc/localtime
+  volumes:
+    - name: localtime
+      hostPath:
+        path: /usr/share/zoneinfo/Asia/Taipei
+  restartPolicy: Always
+---
